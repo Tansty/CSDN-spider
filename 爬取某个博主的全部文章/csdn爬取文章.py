@@ -17,6 +17,8 @@ def spider_one_csdn(title_url):    # 目标文章的链接
     content=page.css("article").get()
     content=re.sub("<a.*?a>","",content)
     content = re.sub("<br>", "", content)
+    content = re.sub("&lt;", "<", content)  # 新增
+    content = re.sub("&gt;", ">", content) # 新增
     #过滤a标签和br标签
     text=tomd.Tomd(content).markdown
     #转换为markdown 文件
